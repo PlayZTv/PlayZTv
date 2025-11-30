@@ -1,1 +1,755 @@
-Test
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayZ Tv - Download Free Movies, TV Shows, Live TV & Sports App</title>
+    <meta name="description" content="Download PlayZ Tv app to watch unlimited movies, TV series, live TV channels, live sports, documentaries and more for free. Stream your favorite content anytime, anywhere.">
+    <meta name="keywords" content="playztv, movies, tv shows, live tv, live sports, streaming app, download app, free movies, sports streaming">
+    <meta name="author" content="PlayZ Tv">
+    <meta property="og:title" content="PlayZ Tv - Free Movies, TV Shows, Live TV & Sports">
+    <meta property="og:description" content="Download PlayZ Tv app to watch unlimited movies, TV series, live TV channels, live sports and more for free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://playztv.store">
+    <link rel="canonical" href="https://playztv.store">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        'primary-dark': '#1E3A8A',
+                        secondary: '#0F172A',
+                        'secondary-light': '#1E293B',
+                        accent: '#334155',
+                        'accent-light': '#475569',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1E40AF 0%, #0F172A 100%);
+        }
+        
+        .hero-pattern {
+            background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 55%), 
+                              radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 55%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .scan-animation {
+            animation: scan 2s ease-in-out infinite;
+        }
+        
+        @keyframes scan {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(30, 64, 175, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(30, 64, 175, 0);
+            }
+        }
+        
+        .screenshot-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .screenshot-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .screenshot-slide {
+            min-width: 100%;
+            transition: opacity 0.5s ease;
+        }
+        
+        .slide-indicator {
+            transition: all 0.3s ease;
+        }
+        
+        .slide-indicator.active {
+            background-color: #1E40AF;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body class="bg-secondary text-white">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-secondary/90 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 cursor-pointer" id="logo">
+                <!-- Logo -->
+                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 8L24 16L12 24V8Z" fill="white"/>
+                        <rect x="4" y="4" width="24" height="24" rx="4" stroke="white" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-xl font-bold">PlayZ Tv</div>
+                    <div class="text-xs text-gray-400 -mt-1">Entertainment Hub</div>
+                </div>
+            </div>
+            <button id="headerBtn" class="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-dark/90 text-white px-6 py-2 rounded-full font-medium flex items-center space-x-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                <i class="fas fa-download"></i>
+                <span>Download App</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg hero-pattern pt-20 pb-16 md:pb-24">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Your All-in-One <span class="text-primary">Entertainment</span> Hub
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
+                        Stream thousands of movies, TV series, live TV channels, live sports events, documentaries, and more - all completely free.
+                    </p>
+                    
+                    <!-- Content Categories -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center card-hover">
+                            <i class="fas fa-film text-2xl text-primary mb-2"></i>
+                            <span class="text-sm font-medium">Movies</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center card-hover">
+                            <i class="fas fa-tv text-2xl text-primary mb-2"></i>
+                            <span class="text-sm font-medium">TV Series</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center card-hover">
+                            <i class="fas fa-satellite-dish text-2xl text-primary mb-2"></i>
+                            <span class="text-sm font-medium">Live TV</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center card-hover">
+                            <i class="fas fa-baseball-ball text-2xl text-primary mb-2"></i>
+                            <span class="text-sm font-medium">Live Sports</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center card-hover">
+                            <i class="fas fa-theater-masks text-2xl text-primary mb-2"></i>
+                            <span class="text-sm font-medium">TV Shows</span>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex flex-col items-center card-hover">
+                            <i class="fas fa-video text-2xl text-primary mb-2"></i>
+                            <span class="text-sm font-medium">Documentaries</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Features -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <div class="flex items-center space-x-2 bg-white/5 rounded-full px-4 py-2">
+                            <i class="fas fa-broadcast-tower text-primary"></i>
+                            <span class="text-sm">Live Streaming</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-white/5 rounded-full px-4 py-2">
+                            <i class="fas fa-mobile-alt text-primary"></i>
+                            <span class="text-sm">Multi-Device</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-white/5 rounded-full px-4 py-2">
+                            <i class="fas fa-hd text-primary"></i>
+                            <span class="text-sm">HD Quality</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Download Section -->
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button id="btn" class="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary-dark/90 text-white px-8 py-4 rounded-full font-bold flex items-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 pulse-glow">
+                            <i class="fas fa-download"></i>
+                            <span>Download PlayZ Tv</span>
+                        </button>
+                        <div class="text-sm text-gray-300">
+                            <p>Version 2.0 | 10 MB</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <!-- Phone Mockup -->
+                        <div class="relative w-64 md:w-80">
+                            <div class="absolute -inset-4 bg-gradient-to-r from-primary to-primary-dark rounded-3xl blur-lg opacity-30"></div>
+                            <div class="relative bg-secondary rounded-3xl p-4 shadow-2xl border border-white/10">
+                                <div class="bg-black rounded-2xl overflow-hidden">
+                                    <!-- Screen Content -->
+                                    <div class="h-80 bg-gradient-to-br from-secondary-light to-accent rounded-lg p-4">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <div class="flex space-x-2">
+                                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            </div>
+                                            <div class="text-xs font-medium">PlayZ Tv</div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-3 gap-2 mb-4">
+                                            <div class="bg-primary/20 rounded-lg h-16 flex items-center justify-center">
+                                                <i class="fas fa-film text-primary"></i>
+                                            </div>
+                                            <div class="bg-primary/20 rounded-lg h-16 flex items-center justify-center">
+                                                <i class="fas fa-tv text-primary"></i>
+                                            </div>
+                                            <div class="bg-primary/20 rounded-lg h-16 flex items-center justify-center">
+                                                <i class="fas fa-satellite-dish text-primary"></i>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="bg-secondary-light rounded-lg p-3 mb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center">
+                                                    <i class="fas fa-play text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="font-medium">Trending Now</div>
+                                                    <div class="text-xs text-gray-400">Action Movie • 2026</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex justify-between">
+                                            <div class="text-center">
+                                                <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-1">
+                                                    <i class="fas fa-home text-primary"></i>
+                                                </div>
+                                                <div class="text-xs">Home</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-1">
+                                                    <i class="fas fa-search text-primary"></i>
+                                                </div>
+                                                <div class="text-xs">Search</div>
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-1">
+                                                    <i class="fas fa-user text-primary"></i>
+                                                </div>
+                                                <div class="text-xs">Profile</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- QR Code for Desktop -->
+                        <div class="hidden lg:block absolute -right-32 top-1/2 transform -translate-y-1/2">
+                            <div class="bg-white rounded-2xl p-4 shadow-2xl">
+                                <div class="relative">
+                                    <div class="w-40 h-40 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center">
+                                        <div class="text-center">
+                                            <i class="fas fa-play-circle text-white text-4xl mb-2"></i>
+                                            <div class="text-white font-bold">PlayZ Tv</div>
+                                        </div>
+                                    </div>
+                                    <div class="absolute inset-0 overflow-hidden rounded-lg">
+                                        <div class="scan-animation w-full h-1 bg-primary/70"></div>
+                                    </div>
+                                </div>
+                                <p class="text-center text-gray-700 text-sm mt-2 font-medium">Scan to Download</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="py-16 bg-secondary">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">App Screenshots</h2>
+            <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">Explore the beautiful and intuitive interface of PlayZ Tv with these screenshots showcasing our key features.</p>
+            
+            <div class="screenshot-slider bg-secondary-light rounded-2xl p-6 max-w-4xl mx-auto">
+                <div class="screenshot-track" id="screenshot-track">
+                    <!-- Screenshot 1 -->
+                    <div class="screenshot-slide">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2">
+                                <div class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-1">
+                                    <div class="bg-black rounded-xl overflow-hidden">
+                                        <div class="h-80 bg-gradient-to-br from-secondary to-accent p-4">
+                                            <div class="flex justify-between items-center mb-4">
+                                                <div class="text-white font-bold">PlayZ Tv</div>
+                                                <div class="text-xs text-gray-400">Home</div>
+                                            </div>
+                                            <div class="space-y-3">
+                                                <div class="bg-primary/20 rounded-lg p-3 flex items-center space-x-3">
+                                                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                                                        <i class="fas fa-fire text-white"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-medium">Trending Now</div>
+                                                        <div class="text-xs text-gray-400">Popular content</div>
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-2 gap-3">
+                                                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                                                        <i class="fas fa-film text-primary mb-1"></i>
+                                                        <div class="text-xs">Movies</div>
+                                                    </div>
+                                                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                                                        <i class="fas fa-tv text-primary mb-1"></i>
+                                                        <div class="text-xs">TV Shows</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold mb-4">Beautiful Home Screen</h3>
+                                <p class="text-gray-400 mb-6">Easily navigate through different content categories with our intuitive home screen design. Discover trending movies, TV shows, and more.</p>
+                                <div class="flex items-center space-x-2 text-primary">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="text-white ml-2">4.8/5 Rating</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Screenshot 2 -->
+                    <div class="screenshot-slide">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2">
+                                <div class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-1">
+                                    <div class="bg-black rounded-xl overflow-hidden">
+                                        <div class="h-80 bg-gradient-to-br from-secondary to-accent p-4">
+                                            <div class="flex justify-between items-center mb-4">
+                                                <div class="text-white font-bold">PlayZ Tv</div>
+                                                <div class="text-xs text-gray-400">Live TV</div>
+                                            </div>
+                                            <div class="space-y-3">
+                                                <div class="bg-primary/20 rounded-lg p-3">
+                                                    <div class="flex justify-between items-center mb-2">
+                                                        <div class="font-medium">Sports Channel</div>
+                                                        <div class="text-xs bg-red-500 text-white px-2 py-1 rounded">LIVE</div>
+                                                    </div>
+                                                    <div class="text-xs text-gray-400">Premier League - Live Match</div>
+                                                </div>
+                                                <div class="bg-white/5 rounded-lg p-3">
+                                                    <div class="flex justify-between items-center">
+                                                        <div>
+                                                            <div class="font-medium">News Channel</div>
+                                                            <div class="text-xs text-gray-400">Breaking News</div>
+                                                        </div>
+                                                        <div class="text-xs bg-green-500 text-white px-2 py-1 rounded">ON AIR</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold mb-4">Live TV & Sports</h3>
+                                <p class="text-gray-400 mb-6">Watch your favorite live TV channels and never miss a sports event with our dedicated live streaming section.</p>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-satellite-dish text-primary"></i>
+                                        <span class="text-sm">6000+ Channels</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-football-ball text-primary"></i>
+                                        <span class="text-sm">Live Sports</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Screenshot 3 -->
+                    <div class="screenshot-slide">
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2">
+                                <div class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-1">
+                                    <div class="bg-black rounded-xl overflow-hidden">
+                                        <div class="h-80 bg-gradient-to-br from-secondary to-accent p-4">
+                                            <div class="flex justify-between items-center mb-4">
+                                                <div class="text-white font-bold">PlayZ Tv</div>
+                                                <div class="text-xs text-gray-400">Player</div>
+                                            </div>
+                                            <div class="flex flex-col items-center justify-center h-56">
+                                                <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
+                                                    <i class="fas fa-play text-white text-xl"></i>
+                                                </div>
+                                                <div class="text-center">
+                                                    <div class="font-medium mb-1">Avengers: Endgame</div>
+                                                    <div class="text-xs text-gray-400">Action • 2019 • 3h 2m</div>
+                                                </div>
+                                                <div class="w-full bg-white/10 rounded-full h-1 mt-6">
+                                                    <div class="bg-primary h-1 rounded-full" style="width: 65%"></div>
+                                                </div>
+                                                <div class="flex justify-between w-full text-xs text-gray-400 mt-2">
+                                                    <span>1:12:45</span>
+                                                    <span>2:15:47</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2">
+                                <h3 class="text-2xl font-bold mb-4">Smooth Video Player</h3>
+                                <p class="text-gray-400 mb-6">Enjoy your favorite content with our advanced video player featuring HD streaming, playback controls, and progress tracking.</p>
+                                <div class="flex items-center space-x-4">
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-hd text-primary"></i>
+                                        <span class="text-sm">HD Quality</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-closed-captioning text-primary"></i>
+                                        <span class="text-sm">Subtitles</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slider Controls -->
+                <div class="flex justify-center items-center mt-8 space-x-4">
+                    <button id="prev-slide" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="flex space-x-2">
+                        <button class="slide-indicator w-3 h-3 bg-white/30 rounded-full active" data-slide="0"></button>
+                        <button class="slide-indicator w-3 h-3 bg-white/30 rounded-full" data-slide="1"></button>
+                        <button class="slide-indicator w-3 h-3 bg-white/30 rounded-full" data-slide="2"></button>
+                    </div>
+                    
+                    <button id="next-slide" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Showcase -->
+    <section class="py-16 bg-secondary-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Everything You Love in One Place</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-secondary rounded-2xl p-6 card-hover border border-white/5">
+                    <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-film text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Movies</h3>
+                    <p class="text-gray-400">Latest blockbusters, classics, and everything in between with premium quality streaming.</p>
+                </div>
+                
+                <div class="bg-secondary rounded-2xl p-6 card-hover border border-white/5">
+                    <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-tv text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">TV Series</h3>
+                    <p class="text-gray-400">Binge-watch your favorite shows with complete seasons and automatic episode tracking.</p>
+                </div>
+                
+                <div class="bg-secondary rounded-2xl p-6 card-hover border border-white/5">
+                    <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-satellite-dish text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Live TV</h3>
+                    <p class="text-gray-400">100+ live channels including news, entertainment, kids and more from around the world.</p>
+                </div>
+                
+                <div class="bg-secondary rounded-2xl p-6 card-hover border border-white/5">
+                    <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-baseball-ball text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Live Sports</h3>
+                    <p class="text-gray-400">Football, basketball, cricket and major sporting events with real-time updates.</p>
+                </div>
+                
+                <div class="bg-secondary rounded-2xl p-6 card-hover border border-white/5">
+                    <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-theater-masks text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">TV Shows</h3>
+                    <p class="text-gray-400">Reality shows, talk shows, and variety entertainment with new episodes added daily.</p>
+                </div>
+                
+                <div class="bg-secondary rounded-2xl p-6 card-hover border border-white/5">
+                    <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-video text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Documentaries</h3>
+                    <p class="text-gray-400">Educational and informative content from around the world on various topics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary-light border-t border-white/10 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-primary-dark rounded-xl">
+                            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 8L24 16L12 24V8Z" fill="white"/>
+                                <rect x="4" y="4" width="24" height="24" rx="4" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold">PlayZ Tv</div>
+                            <div class="text-xs text-gray-400 -mt-1">Entertainment Hub</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Your ultimate destination for free entertainment - movies, TV shows, live TV, sports and more. Stream anytime, anywhere.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Content</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Movies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">TV Series</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Live TV</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Live Sports</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentaries</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Report Issue</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Download</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/playztv-v1.apk" class="text-gray-400 hover:text-white transition-colors">Android APK</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">iOS App</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Windows</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 PlayZ Tv. All rights reserved. playztv.store</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        ; (function (win, doc, sc, url, evt, elem) {
+            win.sendTrackerName = evt
+            win[evt] =
+                win[evt] ||
+                function () {
+                    ; (win[evt].queue = win[evt].queue || []).push(arguments)
+                }
+            win[evt].start = +new Date()
+            var elem = doc.createElement(sc)
+            elem.async = 1
+            elem.src = url
+            elem.SameSite = 'none'
+                ; (doc.body || doc.documentElement).appendChild(elem)
+        })(window, document, 'script', 'https://h5-static.aoneroom.com/sdk/athena-unify.js', 'ath_send');
+
+        window.etm_setting = {
+            openEtm: 'open',
+            appid: 2570,
+            app_vn: '1.0.0',
+            env: 'prod',
+            comParam: {
+                page_name: 'errpage-download',
+                projectId: 'ssr-playztv-official'
+            },
+            loc: 'ali-eur',
+            web_click: 'close',
+            web_leave: 'close',
+            web_stay: 'close',
+            web_view: 'close'
+        }
+
+    </script>
+    <script>
+        // Screenshot Slider Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('screenshot-track');
+            const slides = document.querySelectorAll('.screenshot-slide');
+            const indicators = document.querySelectorAll('.slide-indicator');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+            
+            // Function to update slide position
+            function goToSlide(slideIndex) {
+                currentSlide = slideIndex;
+                track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Next slide function
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                goToSlide(currentSlide);
+            }
+            
+            // Previous slide function
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                goToSlide(currentSlide);
+            }
+            
+            // Start auto slide
+            function startAutoSlide() {
+                slideInterval = setInterval(nextSlide, 3000);
+            }
+            
+            // Stop auto slide
+            function stopAutoSlide() {
+                clearInterval(slideInterval);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', function() {
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
+            
+            // Indicator click events
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    stopAutoSlide();
+                    goToSlide(index);
+                    startAutoSlide();
+                });
+            });
+            
+            // Pause auto slide on hover
+            const slider = document.querySelector('.screenshot-slider');
+            slider.addEventListener('mouseenter', stopAutoSlide);
+            slider.addEventListener('mouseleave', startAutoSlide);
+            
+            // Initialize auto slide
+            startAutoSlide();
+            
+            // Download function
+            function downloadApp() {
+                window.ath_send(
+                    'h5_click',
+                    {
+                        module_name: 'download-icon',
+                        event_ts: Date.now()
+                    },
+                    'beacon'
+                )
+                
+                // Direct download without API call
+                location.href = '/playztv-v1.apk';
+            }
+            
+            // Event listeners for download buttons
+            document.getElementById('btn').addEventListener('click', downloadApp);
+            document.getElementById('headerBtn').addEventListener('click', downloadApp);
+            
+            document.getElementById('logo').addEventListener('click', function () {
+                window.open('https://playztv.store')
+            });
+            
+            // Analytics
+            window.ath_send(
+                'h5_pt',
+                {
+                    event_ts: Date.now()
+                },
+                'beacon'
+            );
+        });
+    </script>
+</body>
+
+  </html>
